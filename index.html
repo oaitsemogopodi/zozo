@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnjs.com/css?family=Bubblegum+Sans" rel="stylesheet">
+
+    <title>Zozo</title>
+</head>
+
+<style>
+     body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffe6e6 0%, #ffccf9 100%);
+    }
+    
+    .flower-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #e8f4f8;
+      flex-direction: column-reverse;
+      gap: 20px;
+    }
+
+    .flower {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .center {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #ffd700;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .petal {
+      position: absolute;
+      width: 50px;
+      height: 80px;
+      background: #ff69b4;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform-origin: center bottom;
+      animation: bloom 2s ease-out forwards;
+      opacity: 0;
+    }
+
+    .stem {
+      position: absolute;
+      width: 6px;
+      height: 100px;
+      background: #32cd32;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .message {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 32px;
+      color: #ff1493;
+      opacity: 0;
+      animation: fadeIn 2s ease-out 2s forwards;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .love-message {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 28px;
+      color: #ff69b4;
+      opacity: 0;
+      animation: fadeIn 2s ease-out 3s forwards;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .message i, .love-message i {
+      color: #ff1493;
+      margin: 0 5px;
+    }
+
+    @keyframes bloom {
+      0% {
+        transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1) rotate(var(--rotation));
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+</style>
+<body>
+    <div class="flower-container">
+        <div class="flower">
+          <div class="stem"></div>
+          <div class="center"></div>
+        </div>
+        <div class="text-container">
+          <div class="message"><i class="fas fa-star"></i>Happy Christmas Zozo<i class="fas fa-star"></i></div>
+          <div class="love-message"><i class="fas fa-heart"></i>I love you<i class="fas fa-heart"></i></div>
+        </div>
+      </div>
+</body>
+
+<script>
+    const flower = document.querySelector('.flower');
+    const numberOfPetals = 12;
+
+    for (let i = 0; i < numberOfPetals; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      const rotation = (360 / numberOfPetals) * i;
+      petal.style.setProperty('--rotation', `${rotation}deg`);
+      petal.style.animationDelay = `${i * 0.15}s`;
+      flower.appendChild(petal);
+    }
+  </script>
+</html>
+
+
+
+
